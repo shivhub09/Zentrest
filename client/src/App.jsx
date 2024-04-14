@@ -1,11 +1,10 @@
 import './App.css'
+import MainScreen from './Components/MainScreen/MainScreen'
 
 function App() {
 
   return (
-    <div>
-      This will be the full stack project
-    </div>
+    <MainScreen></MainScreen>
   )
 }
 
