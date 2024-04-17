@@ -2,7 +2,7 @@ import React from 'react'
 import "./MainScreenServicesCards.css"
 const MainScreenServicesCards = (props) => {
   return (
-    <div className="ServiceCardContainer">
+    <div id="services" className="ServiceCardContainer">
         <img src={props.imgSrc} alt="" srcset="" />
         <div className="ServiceCard-content">
         <h2>{props.title}</h2>

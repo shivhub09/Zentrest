@@ -2,7 +2,7 @@ import React from 'react'
 import './MainScreenAboutUs.css'
 const MainScreenAboutUs = () => {
   return (
-    <div className="AboutUsContainer">
+    <div id="about" className="AboutUsContainer">
       <div className="AboutUsTitle">
         <h1>ABOUT US</h1>
       </div>
