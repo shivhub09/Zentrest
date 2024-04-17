@@ -4,10 +4,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: start;
     height: 90vh;
     width: 100%;
-    margin-bottom: 30px;
 }
 
 .AboutUsTitle h1 {
@@ -17,7 +16,7 @@
     font-weight: 800;
     color: #333; /* dark text color */
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* text shadow */
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     letter-spacing: 5px;
 }
 

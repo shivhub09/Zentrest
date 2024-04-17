@@ -7,7 +7,7 @@ const MainScreenFirstScreen = () => {
         <div className="MainScreenFirstScreen">
             <div className="FirstScreencontainer">
                 <h3 className="mainScreenTitle">WELCOME TO</h3>
-                <h1 className="mainScreenContent">PinIt-Genz</h1>
+                <h1 className="mainScreenContent">ZentRest</h1>
             </div>
 
         </div>

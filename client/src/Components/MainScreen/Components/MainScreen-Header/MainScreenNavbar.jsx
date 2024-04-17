@@ -4,7 +4,7 @@ const MainScreenNavbar = () => {
   return (
     <div className="MainScreenNavbar">
         <div className="logo">
-          Logo
+          ZR
         </div>
 
         <div className="ListOfLinks">

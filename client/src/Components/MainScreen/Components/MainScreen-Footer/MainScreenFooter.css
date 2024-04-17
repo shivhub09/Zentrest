@@ -1,0 +1,16 @@
+.footer {
+    background-color: #333333;
+    color: #fff;
+    text-align: center; 
+    padding: 10px 0px;
+  }
+  
+  .footer p {
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px; 
+    font-weight: 300;
+    color: whitesmoke; 
+    letter-spacing: 1px;
+  }
+  
