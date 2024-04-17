@@ -1,13 +1,14 @@
 .MainScreenNavbar {
     background-color: white; /* Change the background color as needed */
-    padding: 20px 30px;
+    padding: 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    box-shadow: 0 2px 4px rgba(50, 50, 50, 0.3); 
-  position: sticky; 
+    /* box-shadow: 0 2px 4px rgba(50, 50, 50, 0.3);  */
+  position: fixed; 
   top: 0;
   z-index: 1000;
+  width: 100%;
 }
   
 .logo {
@@ -19,7 +20,7 @@
 }
   
 .ListOfLinks {
-
+  margin-right: 50px;
 
 }
   
