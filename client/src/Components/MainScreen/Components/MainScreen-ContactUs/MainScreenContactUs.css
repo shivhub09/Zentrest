@@ -1,0 +1,77 @@
+
+.MainScreenContactUsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-around;
+    height: 50vh;
+    width: 100%;
+  }
+  
+  .MainContactTitle {
+    text-align: center;
+    margin-bottom: 30px;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 60px;
+    font-weight: 800;
+    color: #333; /* dark text color */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* text shadow */
+    margin-bottom: 20px;
+    letter-spacing: 5px;
+  }
+  
+  .Details {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 20px ;
+  }
+  
+  .ContactPerson, .ContactPlace {
+    padding: 20px;
+    border-radius: 8px;
+    margin: 0 20px;
+    max-width: 300px;
+  }
+  
+  .ContactPerson h2, .ContactPlace h2 {
+    margin-bottom: 15px;
+    text-align: start;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 24px;
+    font-weight: 800;
+    color: #333; /* dark text color */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* text shadow */
+    margin-bottom: 20px;
+    letter-spacing:2px;
+  }
+  
+  .ContactPerson p, .ContactPlace p {
+    margin: 10px 0;
+    margin-bottom: 15px;
+    text-align: start;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: grey;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); 
+    margin-bottom: 20px;
+    letter-spacing:1px;
+  }
+  
+  .SocialIcons {
+    display: flex;
+    justify-content: space-between;
+    
+  }
+  
+  .SocialIcons a {
+    color: #333;
+    font-size: 20px;
+    margin: 0 5px;
+  }
+  
+  .SocialIcons a:hover {
+    color: #0077b5; /* LinkedIn color */
+  }
+  
