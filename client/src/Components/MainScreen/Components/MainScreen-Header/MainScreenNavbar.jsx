@@ -15,7 +15,7 @@ const MainScreenNavbar = () => {
                 <li className="item">About Us</li>
                 <li className="item">Services</li>
                 <li className="item">Contact Us</li>
-                <li className="item"> <Link to="/login">Login</Link></li>
+                <li className="loginbtn"> <Link to="/login"><button type="button">Login</button></Link></li>
             </ul>
         </div>
     </div>
