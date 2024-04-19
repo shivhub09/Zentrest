@@ -20,11 +20,10 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Style for the title */
 .mainScreenTitle {
     font-size: 45px;
     margin-bottom: 10px; 
-    color: #333; /* Change title color to a darker shade for contrast */
+    color: #333;
     letter-spacing: 4px;
     font-weight: 800;
     animation: slideInDown 1s ease-in-out;

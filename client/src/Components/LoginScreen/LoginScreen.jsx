@@ -1,5 +1,7 @@
 import React from 'react'
 import './LoginScreen.css'
+import { Link } from 'react-router-dom';
+
 const LoginScreen = () => {
   return (
     <div className="LoginScreenContainer">
@@ -13,13 +15,13 @@ const LoginScreen = () => {
           </div>
           <div className="forms">
             <input type="text" name="email" placeholder='Email' id="" />
-            <input type="text" name="" id="" placeholder='Password'/>
+            <input type="text" name="" id="" placeholder='Password' />
           </div>
           <div className="box3">
-          <input className='loginBtn'  type="button" value="LOGIN ! " />
-          <p>Don't have an account? Register Now!</p>
+            <input className='loginBtn' type="button" value="LOGIN ! " />
+            <p>Don't have an account?  <Link to="/register">Create Now! </Link></p>
           </div>
- 
+
         </div>
       </div>
     </div>
