@@ -19,11 +19,11 @@ app.use(express.static("public"))
 
 
 // routes 
-// const userRoute = require("./routes/user.routes");
+const router = require("./routes/user.routes");
 
 // routes declaration
 
-// app.use("/api/v1/users", userRoute)
+app.use("/api/v1/users", router)
 
 
 module.exports = app
