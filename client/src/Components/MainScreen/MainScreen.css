@@ -1,5 +1,3 @@
-.MainScreen {
-    min-height: 100vh; /* Set minimum height to 100% of the viewport height */
-    overflow-y: auto; /* Allow vertical scrolling if content overflows */
-  }
-  
+.MainScreen{
+  height: auto;
+}
