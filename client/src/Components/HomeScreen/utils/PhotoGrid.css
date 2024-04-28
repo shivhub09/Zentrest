@@ -1,6 +1,6 @@
 .photo-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* Default: 4 columns */
+  grid-template-columns: repeat(4, 1fr); 
   gap: 16px;
 }
 
@@ -9,22 +9,22 @@
 .photo-item {
   position: relative;
   background: white;
-  border: 1px solid #ddd; /* Light border */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Light shadow */
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-  transition: all 0.3s ease; /* Smooth transition for hover effects */
-  padding: 10px; /* Consistent padding */
-  overflow: hidden; /* Ensures content doesn't overflow */
+  transition: all 0.3s ease; 
+  overflow: hidden; 
+  margin-bottom: 10px;
 }
 
 .photo-item img {
   width: 100%; 
-  height: 100%; /* Fills the parent height */
-  object-fit: cover; /* Maintains aspect ratio */
-  border-radius: 8px; /* Ensures image corners align with parent */
+  height: 100%; 
+  object-fit: cover; 
+  border-radius: 8px; 
 }
 
 .photo-item:hover {
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); /* Enhanced shadow */
-  transform: scale(1.05); /* Slight scaling for hover effect */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); 
+  transform: scale(1.05); 
 }

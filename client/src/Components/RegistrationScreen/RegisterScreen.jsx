@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './RegisterScreen.css';
-import { response } from '../../../../server/src/app';
 
 const RegisterScreen = () => {
   const [formData, setFormData] = useState({
