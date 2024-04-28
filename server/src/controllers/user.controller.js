@@ -4,6 +4,7 @@ const apiResponse = require("../utils/apiResponse");
 const User = require('../models/user.model');
 const uploadOnCloudinary = require("../utils/cloudinary");
 const LikedPosts = require('../models/liked.model');
+const Post = require('../models/post.model');
 
 const registerUser = asyncHandler(async (req, res) => {
   try {
@@ -12,12 +13,12 @@ const registerUser = asyncHandler(async (req, res) => {
     const existedUser = await User.findOne({ email });
     if (existedUser) {
       console.log("user without emai");
-      // throw new apiError(409, "User with this email already exists");
+      throw new apiError(409, "User with this email already exists");
     }
 
     const profilePhotoPath = req.files?.profilePhoto?.[0]?.path;
     if (!profilePhotoPath) {
-      // throw new apiError(400, "Profile photo is required");
+      throw new apiError(400, "Profile photo is required");
     }
 
     const profilePhotoFinal = await uploadOnCloudinary(profilePhotoPath);
@@ -59,7 +60,6 @@ const likePost = asyncHandler(async (req, res) => {
       throw new apiError(400, "Both 'imageUrl' and 'userEmail' are required.");
     }
 
-    // Find the user by email to get the User ID
     const user = await User.findOne({ email: userEmail });
 
     if (!user) {
@@ -100,4 +100,50 @@ const likePost = asyncHandler(async (req, res) => {
 });
 
 
-module.exports = { registerUser, likePost };
+const createPost = asyncHandler(async (req, res) => {
+  try {
+    const { description, isGenerated, userEmail } = req.body;
+    const postFilePath = req.files?.postFile?.[0]?.path
+    const user = await User.findOne({ email: userEmail });
+  
+    if (!user) {
+      throw new apiError(500, "couldnot find the user");
+    }
+  
+    if (!postFilePath) {
+      throw new apiError(400, "post file not added");
+    }
+  
+    const postFile = await uploadOnCloudinary(postFilePath);
+    if (!postFilePath) {
+      throw new apiError(400, "Failed to upload profile photo");
+    }
+  
+  
+    const post = Post.create({
+      postFile: postFile,
+      description: description,
+      isGenerated: isGenerated,
+      owner: user._id
+    });
+  
+
+    const createdPost = Post({
+      postFile: postFile,
+      description: description,
+      isGenerated: isGenerated,
+      owner: user._id
+    });
+  
+    res.status(201).json(new apiResponse(201, createdPost, "Post Successfully Created"));
+  } catch (error) {
+    const statusCode = error.statusCode || 500; // Default to internal server error
+    const errorMessage = error.message || "An unexpected error occurred";
+
+    res.status(statusCode).json(new apiResponse(statusCode, null, errorMessage));
+  }
+})
+
+
+
+module.exports = { registerUser, likePost , createPost };

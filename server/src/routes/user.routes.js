@@ -20,4 +20,16 @@ router.route("/likePost").post(
 )
 
 
+router.route("/createPost").post(  upload.fields(
+    [
+        {
+            name: "postFile",
+            maxCount: 1
+        }
+    ]
+),
+    userController.createPost
+)
+
+
 module.exports = router;
