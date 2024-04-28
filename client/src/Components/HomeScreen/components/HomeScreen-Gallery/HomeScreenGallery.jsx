@@ -13,7 +13,7 @@ const HomeScreenGallery = () => {
       try {
         const baseURL = 'https://api.pexels.com/v1/search';
         const params = {
-          query: 'nature',
+          query: 'aesthetic',
           per_page: 8, 
         };
   

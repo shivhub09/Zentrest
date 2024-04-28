@@ -4,6 +4,7 @@ import MainScreen from './Components/MainScreen/MainScreen'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import RegisterScreen from './Components/RegistrationScreen/RegisterScreen';
 import HomeScreen from './Components/HomeScreen/HomeScreen';
+import SearchScreen from './Components/SearchScreen/SearchScreen';
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
         <Route path="/login" element={<LoginScreen></LoginScreen>} />
         <Route path="/register" element={<RegisterScreen></RegisterScreen>} />
         <Route path='/homeScreen' element={<HomeScreen></HomeScreen>} />
+        <Route path='/search' element={<SearchScreen></SearchScreen>} />
       </Routes>
 
     </Router>
