@@ -1,6 +1,5 @@
 import React from 'react';
 import './ProfileScreen.css';
-import { FaEdit } from 'react-icons/fa'; 
 
 const ProfileScreen = () => {
   return (

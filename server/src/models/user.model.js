@@ -18,8 +18,6 @@ const userSchema = new Schema({
         unique:true
     },
 
-
-
     profilePhoto: {
         type: String,
         required: true,
