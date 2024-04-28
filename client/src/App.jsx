@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import RegisterScreen from './Components/RegistrationScreen/RegisterScreen';
 import HomeScreen from './Components/HomeScreen/HomeScreen';
 import SearchScreen from './Components/SearchScreen/SearchScreen';
+import ProfileScreen from './Components/ProfileScreen/ProfileScreen';
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
         <Route path="/register" element={<RegisterScreen></RegisterScreen>} />
         <Route path='/homeScreen' element={<HomeScreen></HomeScreen>} />
         <Route path='/search' element={<SearchScreen></SearchScreen>} />
+        <Route path='/profile' element={<ProfileScreen></ProfileScreen>} />
       </Routes>
 
     </Router>

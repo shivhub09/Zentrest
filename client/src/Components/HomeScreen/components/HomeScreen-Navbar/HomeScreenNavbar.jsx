@@ -31,7 +31,7 @@ const HomeScreenNavbar = () => {
               onKeyDown={handleKeyDown} // Attach the event handler
             />
           </li>
-          <li className="item">Profile</li>
+          <li className="item"><Link to="/profile">Profile</Link></li>
           <li className="item">Generate</li>
           <li className="item">Feedback</li>
           <li className="logoutbtn">
