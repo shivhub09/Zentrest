@@ -9,7 +9,7 @@ const LikedPostsSchema = new Schema({
   },
   likedBy: {
     type: Types.ObjectId,
-    ref: 'User', // Refers to a User collection
+    ref: 'User',
     required: true,
   },
   likedAt: {
@@ -18,7 +18,6 @@ const LikedPostsSchema = new Schema({
   },
 });
 
-// Index to speed up queries involving imageUrl and likedBy
 LikedPostsSchema.index({ imageUrl: 1, likedBy: 1 }, { unique: true });
 
 const LikedPosts = mongoose.model('LikedPosts', LikedPostsSchema);

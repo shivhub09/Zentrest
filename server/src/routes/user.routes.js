@@ -19,7 +19,6 @@ router.route("/likePost").post(
     userController.likePost
 )
 
-
 router.route("/createPost").post(  upload.fields(
     [
         {
@@ -31,5 +30,13 @@ router.route("/createPost").post(  upload.fields(
     userController.createPost
 )
 
+
+router.route("/fetchPosts").post(
+    userController.getAllPost
+)
+
+router.route("/fetchLikedPosts").post(
+    userController.getAllLikedPost
+)
 
 module.exports = router;

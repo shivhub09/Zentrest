@@ -105,36 +105,38 @@ const createPost = asyncHandler(async (req, res) => {
     const { description, isGenerated, userEmail } = req.body;
     const postFilePath = req.files?.postFile?.[0]?.path
     const user = await User.findOne({ email: userEmail });
-  
+
     if (!user) {
       throw new apiError(500, "couldnot find the user");
     }
-  
+
     if (!postFilePath) {
       throw new apiError(400, "post file not added");
     }
-  
+
     const postFile = await uploadOnCloudinary(postFilePath);
     if (!postFilePath) {
       throw new apiError(400, "Failed to upload profile photo");
     }
-  
-  
+
+
     const post = Post.create({
-      postFile: postFile,
+      postFile: postFile.url,
       description: description,
       isGenerated: isGenerated,
       owner: user._id
     });
-  
+
+    console.log(post);
+
 
     const createdPost = Post({
-      postFile: postFile,
+      postFile: postFile.url,
       description: description,
       isGenerated: isGenerated,
       owner: user._id
     });
-  
+
     res.status(201).json(new apiResponse(201, createdPost, "Post Successfully Created"));
   } catch (error) {
     const statusCode = error.statusCode || 500; // Default to internal server error
@@ -146,4 +148,65 @@ const createPost = asyncHandler(async (req, res) => {
 
 
 
-module.exports = { registerUser, likePost , createPost };
+// get all created Posts
+const getAllPost = asyncHandler(async (req, res) => {
+  try {
+    const { email } = req.body;
+
+    if (!email) {
+      throw new apiError(400, "Invalid email or no email entered");
+    }
+
+    const user = await User.findOne({ email: email });
+
+    if (!user) {
+      throw new apiError(400, "No user found , Email may be incorrect");
+    }
+
+    const posts = await Post.find({ owner: user._id });
+
+    res.status(201).json(new apiResponse(201, posts, "Posts fetched successfully"));
+
+
+  } catch (error) {
+    const statusCode = error.statusCode || 500; // Default to internal server error
+    const errorMessage = error.message || "An unexpected error occurred";
+
+    res.status(statusCode).json(new apiResponse(statusCode, null, errorMessage));
+  }
+}
+);
+
+
+
+// fetch all liked posts
+const getAllLikedPost = asyncHandler(async (req, res) => {
+  try {
+    const { email } = req.body;
+
+    if (!email) {
+      throw new apiError(400, "Invalid email or no email entered");
+    }
+
+    const user = await User.findOne({ email: email });
+
+    if (!user) {
+      throw new apiError(400, "No user found , Email may be incorrect");
+    }
+
+    const posts = await LikedPosts.find({ likedBy: user._id });
+
+    res.status(201).json(new apiResponse(201, posts, "All liked posts fetched successfully"));
+
+
+  } catch (error) {
+    const statusCode = error.statusCode || 500; // Default to internal server error
+    const errorMessage = error.message || "An unexpected error occurred";
+
+    res.status(statusCode).json(new apiResponse(statusCode, null, errorMessage));
+  }
+}
+);
+
+
+module.exports = { registerUser, likePost, createPost, getAllPost , getAllLikedPost };
