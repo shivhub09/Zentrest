@@ -6,6 +6,8 @@ const uploadOnCloudinary = require("../utils/cloudinary");
 const LikedPosts = require('../models/liked.model');
 const Post = require('../models/post.model');
 
+
+// register a new user in the backend 
 const registerUser = asyncHandler(async (req, res) => {
   try {
     const { name, email, password } = req.body;
@@ -50,6 +52,39 @@ const registerUser = asyncHandler(async (req, res) => {
 });
 
 
+// login functionality for the user
+const loginUser = asyncHandler(async (req, res) => {
+  try {
+    const { userEmail, password } = req.body;
+
+    if (!userEmail || !password) {
+      throw new apiError(401, "Invalid user email or password. Password and Email are required");
+    }
+
+    const user = await User.findOne({ email: userEmail });
+
+    if (!user) {
+      throw new apiError(401, "User does not exist. Create new account");
+    }
+
+    const isPasswordValid = await user.isPasswordCorrect(password)
+
+    if (!isPasswordValid) {
+      throw new apiError(401, "Invalid user credentials")
+    }
+
+    return res.status(200).json(new apiResponse(200, user, "User successfully loggedIn"))
+  } catch (error) {
+    const statusCode = error.statusCode || 500; // Default to internal server error
+    const errorMessage = error.message || "An unexpected error occurred";
+
+    res.status(statusCode).json(new apiResponse(statusCode, null, errorMessage));
+  }
+
+})
+
+
+// like a post
 const likePost = asyncHandler(async (req, res) => {
   try {
     console.log(req.body);
@@ -209,4 +244,4 @@ const getAllLikedPost = asyncHandler(async (req, res) => {
 );
 
 
-module.exports = { registerUser, likePost, createPost, getAllPost , getAllLikedPost };
+module.exports = { registerUser,loginUser ,likePost, createPost, getAllPost, getAllLikedPost };

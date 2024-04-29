@@ -19,6 +19,10 @@ router.route("/likePost").post(
     userController.likePost
 )
 
+router.route("/loginUser").post(
+    userController.loginUser
+)
+
 router.route("/createPost").post(  upload.fields(
     [
         {
