@@ -3,13 +3,11 @@ import { Link, useNavigate } from 'react-router-dom'
 import './HomeScreenNavbar.css'
 
 const HomeScreenNavbar = () => {
-  // Initialize the useNavigate hook
   const navigate = useNavigate()
 
-  // Function to handle keydown events in the search box
   const handleKeyDown = (event) => {
-    if (event.key === 'Enter') { // Check if the pressed key is "Enter"
-      const searchQuery = event.target.value // Get the search box value
+    if (event.key === 'Enter') {
+      const searchQuery = event.target.value 
       if (searchQuery.trim()) {
         
         navigate(`/search?q=${encodeURIComponent(searchQuery)}`)
@@ -28,10 +26,12 @@ const HomeScreenNavbar = () => {
               type="text" 
               className='searchBox' 
               placeholder='Search 🔍' 
-              onKeyDown={handleKeyDown} // Attach the event handler
+              onKeyDown={handleKeyDown} 
             />
           </li>
           <li className="item"><Link to="/profile">Profile</Link></li>
+          <li className="item"><Link to="/createPost">Create</Link></li>
+          <li className="item"><Link to="/browsePost">Browse</Link></li>
           <li className="item">Generate</li>
           <li className="item">Feedback</li>
           <li className="logoutbtn">

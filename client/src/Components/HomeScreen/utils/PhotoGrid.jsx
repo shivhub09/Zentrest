@@ -1,13 +1,14 @@
 import React from 'react';
-import './PhotoGrid.css'; // Assuming you have a CSS file for your component
+import './PhotoGrid.css'; 
 
 const PhotoGrid = ({ photo }) => {
-  const { id, src, url } = photo;  // Destructure to access necessary properties
+  const { id, src, url } = photo;  
 
   return (
     <div key={id} className="photo-item">
-        <img src={src.original} alt={`Photo ${id}`} />  {/* Include alt attribute for accessibility */}
-      </div>
+      <img src={src.original} alt={`Photo ${id}`} />  
+      <input type="button" value="🩷" />
+    </div>
   );
 };
 

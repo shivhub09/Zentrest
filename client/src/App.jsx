@@ -6,7 +6,9 @@ import RegisterScreen from './Components/RegistrationScreen/RegisterScreen';
 import HomeScreen from './Components/HomeScreen/HomeScreen';
 import SearchScreen from './Components/SearchScreen/SearchScreen';
 import ProfileScreen from './Components/ProfileScreen/ProfileScreen';
-import HomeScreenCreatePost from './Components/HomeScreen/components/HomeScreen-CreatePost/HomeScreenCreatePost';
+import HomeScreenCreatePost from './Components/AddPostScreen/HomeScreenCreatePost';
+import HomeScreenBrowse from './Components/HomeScreen/components/HomeScreen-Browse/HomeScreenBrowse';
+
 function App() {
 
   return (
@@ -20,6 +22,7 @@ function App() {
         <Route path='/search' element={<SearchScreen></SearchScreen>} />
         <Route path='/profile' element={<ProfileScreen></ProfileScreen>} />
         <Route path='/createPost' element={<HomeScreenCreatePost></HomeScreenCreatePost>} />
+        <Route path='/browsePost' element={<HomeScreenBrowse></HomeScreenBrowse>} />
       </Routes>
 
     </Router>
