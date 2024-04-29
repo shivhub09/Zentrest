@@ -182,7 +182,6 @@ const createPost = asyncHandler(async (req, res) => {
 })
 
 
-
 // get all created Posts
 const getAllPost = asyncHandler(async (req, res) => {
   try {
@@ -211,7 +210,6 @@ const getAllPost = asyncHandler(async (req, res) => {
   }
 }
 );
-
 
 
 // fetch all liked posts

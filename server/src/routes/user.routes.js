@@ -1,7 +1,6 @@
 const { Router } = require("express");
 const userController = require("../controllers/user.controller");
 const upload  = require("../middlewares/multer.middleware");
-
 const router = Router();
 
 router.route("/registerUser").post(
