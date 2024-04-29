@@ -22,7 +22,7 @@ router.route("/loginUser").post(
     userController.loginUser
 )
 
-router.route("/createPost").post(  upload.fields(
+router.route("/createPostbyUser").post(  upload.fields(
     [
         {
             name: "postFile",
@@ -34,11 +34,11 @@ router.route("/createPost").post(  upload.fields(
 )
 
 
-router.route("/fetchPosts").post(
-    userController.getAllPost
+router.route("/fetchAllPostCreatedByUser").post(
+    userController.getAllPostCreatedByUser
 )
 
-router.route("/fetchLikedPosts").post(
+router.route("/fetchLikedPostsByUser").post(
     userController.getAllLikedPost
 )
 

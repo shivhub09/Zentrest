@@ -13,7 +13,7 @@ const registerUser = asyncHandler(async (req, res) => {
     const { name, email, password } = req.body;
 
     const existedUser = await User.findOne({ email });
-    if (existedUser) {
+    if (existedUser) {  
       console.log("user without emai");
       throw new apiError(409, "User with this email already exists");
     }
@@ -183,7 +183,7 @@ const createPost = asyncHandler(async (req, res) => {
 
 
 // get all created Posts
-const getAllPost = asyncHandler(async (req, res) => {
+const getAllPostCreatedByUser = asyncHandler(async (req, res) => {
   try {
     const { email } = req.body;
 
@@ -242,4 +242,4 @@ const getAllLikedPost = asyncHandler(async (req, res) => {
 );
 
 
-module.exports = { registerUser,loginUser ,likePost, createPost, getAllPost, getAllLikedPost };
+module.exports = { registerUser,loginUser ,likePost, createPost, getAllPostCreatedByUser, getAllLikedPost };
