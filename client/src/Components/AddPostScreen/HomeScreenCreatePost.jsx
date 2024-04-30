@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import './HomeScreenCreatePost.css';
-
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 const HomeScreenCreatePost = () => {
     const [postText, setPostText] = useState('');
     const [image, setImage] = useState(null);
     const [imagePreview, setImagePreview] = useState(null);
+    const [loading, setLoading] = useState(false); 
+    const navigate = useNavigate();
 
     const handleTextChange = (e) => {
         setPostText(e.target.value);
@@ -21,13 +24,48 @@ const HomeScreenCreatePost = () => {
             reader.readAsDataURL(file);
         }
     };
+    const handlePost = async () => {
+        if (!postText && !image) {
+            alert("You must enter text or upload an image to create a post.");
+            return;
+        }
 
-    const handlePost = () => {
-        console.log('Post content:', postText);
-        if (image) {
-            console.log('Uploaded image:', image);
+        setLoading(true); // Show loading state while posting
+        try {
+            const formData = new FormData();
+            formData.append("description", postText);
+            formData.append("userEmail", "shivnagori2020@gmail.com");
+            formData.append("isGenerated", false);
+            if (image) {
+                formData.append("postFile", image);
+            }
+
+            const response = await axios.post('http://localhost:8080/api/v1/users/createPostbyUser', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
+            });
+
+            console.log('Post created:', response.data);
+            setLoading(false);
+            alert("Post created successfully!"); 
+            navigate('/profile'); 
+            setPostText('');
+            setImage(null);
+            setImagePreview(null);
+        } catch (error) {
+            console.error("Error creating post:", error);
+            setLoading(false);
+            alert("An error occurred while creating the post. Please try again.");
         }
     };
+
+
+
+
+
+
+
 
     return (
         <div className="create-post-container">
@@ -54,16 +92,12 @@ const HomeScreenCreatePost = () => {
                         onChange={handleTextChange}
                     ></textarea>
                     <div className="create-post-footer">
-                        <button className="post-button" onClick={handlePost}>
-                            POST
+                        <button className="post-button" onClick={handlePost} disabled={loading}>
+                            {loading ? "Posting..." : "POST"}
                         </button>
                     </div>
-
-
                 </div>
-
             </div>
-
         </div>
     );
 };

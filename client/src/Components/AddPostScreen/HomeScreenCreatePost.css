@@ -36,7 +36,7 @@
 }
 
 .image-upload {
-    display: none; /* Hide the input by default */
+    display: none; 
 }
 
 .upload-button {
@@ -93,15 +93,15 @@
 .create-post-content textarea {
     margin: 20px 30px;
     width: 75%;
-    height: 350px;
+    height: 300px;
     padding: 20px;
     border-radius: 18px;
     border: 1px solid #ddd;
     resize: none;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 14px;
+    font-size: 22px;
     font-weight:  600;
-    color: #333; /* dark text color */
+    color: #333; 
     font-size: 14px;
 }
 
@@ -118,7 +118,7 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 20px;
     font-weight:  800;
-    color: white; /* dark text color */
+    color: white;
     text-align: center;
     border: none;
     text-decoration: none;
