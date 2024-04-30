@@ -1,4 +1,58 @@
-.galleryContainer{
-    margin-top: 100px;
-    padding: 0px 30px;
+.galleryContainer {
+  margin-top: 15px; 
+  padding: 75px;
+  background: linear-gradient(to bottom, #fafafa, #f0f0f0); /* Light background gradient */
+  min-height: 100vh; /* Ensure the container fills the viewport */
+}
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Responsive grid layout */
+  gap: 20px; /* Space between grid items */
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%; /* Full height for center alignment */
+}
+
+.loading span {
+  border: 4px solid transparent;
+  border-top: 4px solid #333; /* Spinner color */
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 1s linear infinite; /* Smooth spinner animation */
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.error {
+  text-align: center;
+  color: #d9534f; /* Distinct error color */
+  font-weight: bold;
+  padding: 20px; /* Padding for error message */
+}
+
+.error button {
+  background: #e44e42;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.error button:hover {
+  background: #c9302c; /* Darker shade for hover effect */
 }

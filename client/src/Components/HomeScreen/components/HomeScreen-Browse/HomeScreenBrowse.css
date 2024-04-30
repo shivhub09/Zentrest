@@ -1,5 +1,7 @@
 .AllPostsContainer {
-  background: linear-gradient(to bottom, #5f5f5f, #7f7f7f, #303030);
+  padding: 20px;
+  background: linear-gradient(135deg, #303030, #606060);
+  min-height: 100vh;
 }
 
 @keyframes spinner {
@@ -16,79 +18,69 @@
 
 .loading span {
   border: 4px solid transparent;
-  border-top: 4px solid #fff;
+  border-top: 4px solid white;
   border-radius: 50%;
   width: 30px;
   height: 30px;
   animation: spinner 1s linear infinite;
 }
 
-
 .error {
   text-align: center;
-  color: #d9534f; /* A more standard error red */
+  color: #d9534f;
   font-weight: bold;
-  padding: 10px;
+  padding: 20px;
 }
 
 .error button {
-  background: #ff6f61; /* Coral */
+  background: #e44e42;
   color: white;
   border: none;
-  border-radius: 12px;
-  padding: 10px;
+  border-radius: 10px;
+  padding: 10px 20px;
   cursor: pointer;
   transition: all 0.3s;
 }
 
 .error button:hover {
-  background: #e44e42; /* Slightly darker on hover */
+  background: #c9302c; /* A bit darker red for hover effect */
 }
-
 
 .all-posts-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 30px;
   padding: 20px;
 }
 
-
 .post-item {
-  height: 500px;
   background: white;
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); 
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
   transition: all 0.3s;
 }
 
 .post-item:hover {
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2); 
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
 }
-
-
 
 .post-image {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.3s, opacity 0.3s;
-  border-radius: 16px;
+  height: 300px; /* Maintain a consistent height */
+  object-fit: cover; /* Maintain aspect ratio */
+  transition: transform 0.3s;
 }
 
 .post-image:hover {
-  transform: scale(1.10); 
-  opacity: 0.9;
+  transform: scale(1.05); /* Slight zoom-in on hover */
 }
-
 
 h1 {
   text-align: center;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Segoe UI', sans-serif;
   font-size: 55px;
-  font-weight: 800;
-  color: #333; 
-  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3); 
-  letter-spacing: 4px; 
+  font-weight: bold;
+  color: white; /* White text for better contrast */
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
 }
