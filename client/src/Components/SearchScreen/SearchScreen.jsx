@@ -57,7 +57,7 @@ const SearchScreen = () => {
             <div className="searchGalleryContainer">
                 <div className="photo-grid">
                     {photos.map((photo) => (
-                        <PhotoGrid key={photo.id} photo={photo} />
+                        <PhotoGrid key={photo.id} photo={photo}  />
                     ))}
                 </div>
             </div>

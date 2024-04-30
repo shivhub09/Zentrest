@@ -53,7 +53,7 @@ const ProfileScreenLikedPosts = () => {
       <div className="liked-posts-grid">
       {photos.map((photo, index) => (
         <div key={index} className="post-item">
-          <img src={photo.postFile} alt={`Photo ${index}`} className="post-image" />
+          <img src={photo.imageUrl} alt={`Photo ${index}`} className="post-image" />
         </div>
       ))}
     </div>

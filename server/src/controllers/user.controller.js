@@ -85,54 +85,44 @@ const loginUser = asyncHandler(async (req, res) => {
 
 
 // like a post
-const likePost = asyncHandler(async (req, res) => {
+const likePost = async (req, res) => {
   try {
-    console.log(req.body);
-
     const { imageUrl, userEmail } = req.body;
 
     if (!imageUrl || !userEmail) {
-      throw new apiError(400, "Both 'imageUrl' and 'userEmail' are required.");
+      throw new Error("Both 'imageUrl' and 'userEmail' are required.");
     }
 
     const user = await User.findOne({ email: userEmail });
 
     if (!user) {
-      throw new apiError(404, `No user found with email: ${userEmail}`);
+      res.status(404).json({ message: `No user found with email: ${userEmail}` });
+      return;
     }
 
     const existingLiked = await LikedPosts.findOne({
-      imageUrl: imageUrl,
+      imageUrl,
       likedBy: user._id,
     });
 
     if (existingLiked) {
-      throw new apiError(400, "You have already liked this post.");
+      res.status(400).json({ message: "You have already liked this post." });
+      return;
     }
-
-    console.log("No like record found.");
 
     const newLiked = new LikedPosts({
       imageUrl,
       likedBy: user._id,
     });
 
-    console.log("Saving new like:", newLiked);
-
     await newLiked.save();
 
-    console.log("Post liked and saved.");
-
-    res.status(201).json(
-      new apiResponse(201, newLiked, "Post liked successfully.")
-    );
-
+    res.status(201).json({ message: "Post liked successfully.", like: newLiked });
   } catch (error) {
-    const statusCode = error.statusCode || 500;
-    const errorMessage = error.message || "An unexpected error occurred.";
-    res.status(statusCode).json(new apiResponse(statusCode, null, errorMessage));
+    console.error("Error in likePost:", error);
+    res.status(500).json({ message: "Internal server error." });
   }
-});
+};
 
 
 const createPost = asyncHandler(async (req, res) => {
