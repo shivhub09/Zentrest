@@ -42,4 +42,14 @@ router.route("/fetchLikedPostsByUser").post(
     userController.getAllLikedPost
 )
 
+
+router.route("/deletePostCreatedByUser").post(
+    userController.deleteUserPost
+)
+
+
+router.route("/unlikedPostLikedByUser").post(
+    userController.unlikePostByUser
+)
+
 module.exports = router;

@@ -13,7 +13,7 @@ const registerUser = asyncHandler(async (req, res) => {
     const { name, email, password } = req.body;
 
     const existedUser = await User.findOne({ email });
-    if (existedUser) {  
+    if (existedUser) {
       console.log("user without emai");
       throw new apiError(409, "User with this email already exists");
     }
@@ -231,5 +231,74 @@ const getAllLikedPost = asyncHandler(async (req, res) => {
 }
 );
 
+const deleteUserPost = asyncHandler(async (req, res) => {
+  try {
+    const { userEmail, postUrl } = req.body;
 
-module.exports = { registerUser,loginUser ,likePost, createPost, getAllPostCreatedByUser, getAllLikedPost };
+    if (!userEmail || !postUrl) {
+      return res.status(400).json(new apiError(400, "Email and post URL are required"));
+    }
+
+    const user = await User.findOne({ email: userEmail });
+
+    if (!user) {
+      return res.status(404).json(new apiError(404, "User not found"));
+    }
+
+    const deleteResult = await Post.deleteOne({ postFile: postUrl, owner: user._id });
+
+    if (deleteResult.deletedCount === 0) {
+      return res.status(404).json(new apiError(404, "Post not found or doesn't belong to this user"));
+    }
+
+    res.status(200).json(new apiResponse(200, deleteResult, "Successfully deleted post"));
+  } catch (error) {
+    console.error("Error deleting post:", error);
+    const statusCode = error.statusCode || 500;
+    const errorMessage = error.message || "An unexpected error occurred";
+
+    res.status(statusCode).json(new apiResponse(statusCode, null, errorMessage));
+  }
+});
+
+
+// const unlike post liked by user 
+
+const unlikePostByUser = asyncHandler(async (req, res)=>{
+  try {
+    const {userEmail , postUrl} = req.body;
+
+    if(!userEmail || !postUrl){
+      return res.status(400).json(new apiError(400, "Email and post URL are required"));
+    }
+
+    const user = await User.findOne({email:userEmail});
+
+    if(!user){
+      return res.status(404).json(new apiError(404, "User not found"));
+    }
+
+    const unlikedPost = await LikedPosts.deleteOne({imageUrl: postUrl , likedBy: user._id});
+
+    if (unlikedPost.deletedCount === 0) {
+      return res.status(404).json(new apiError(404, "Post not found or doesn't belong to this user"));
+    }
+
+    res.status(200).json(new apiResponse(200, deleteResult, "Successfully unliked post"));
+
+
+  } catch (error) {
+    console.error("Error unliking post:", error);
+    const statusCode = error.statusCode || 500;
+    const errorMessage = error.message || "An unexpected error occurred";
+
+    res.status(statusCode).json(new apiResponse(statusCode, null, errorMessage));
+  }
+
+
+
+})
+
+
+
+module.exports = { registerUser, loginUser, likePost, createPost, getAllPostCreatedByUser, getAllLikedPost , deleteUserPost , unlikePostByUser};

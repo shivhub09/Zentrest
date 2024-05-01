@@ -14,7 +14,7 @@ const HomeScreenGallery = () => {
         const baseURL = 'https://api.pexels.com/v1/search';
         const params = {
           query: 'aesthetic',
-          per_page: 8, 
+          per_page: 12, 
         };
   
         const response = await axios.get(baseURL, {
